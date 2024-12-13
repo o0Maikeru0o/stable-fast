@@ -14,7 +14,7 @@ runs:
   using: composite
   steps:
     - name: Install cuda
-      uses: Jimver/cuda-toolkit@v0.2.19
+      uses: o0Maikeru0o/cuda-toolkit@v0.3.7
       id: cuda-toolkit
       with:
         cuda: ${{ inputs.cuda }}
