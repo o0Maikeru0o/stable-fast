@@ -4,17 +4,18 @@ inputs:
   cuda:
     description: Cuda version to install
     type: string
-    default: "11.7.1"
+    default: "12.4.0"
   python:
     description: Python version to install
     type: string
-    default: "3.10"
+    default: "3.12"
 
 runs:
   using: composite
   steps:
     - name: Install cuda
-      uses: okazunori2013/cuda-toolkit@v0.3.6
+      uses: Jimver/cuda-toolkit@v0.2.19
+      id: cuda-toolkit
       with:
         cuda: ${{ inputs.cuda }}
         method: network
@@ -25,7 +26,7 @@ runs:
         python-version: ${{ inputs.python }}
 
     - name: Setup MSVC
-      uses: ilammy/msvc-dev-cmd@v1
+      uses: ilammy/msvc-dev-cmd@v1.13.0
 
     # really unfortunate: https://github.com/ilammy/msvc-dev-cmd#name-conflicts-with-shell-bash
     - name: Remove link.exe
